@@ -1,0 +1,33 @@
+package com.torryharris;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+//to print the elements of an array
+         int[] a={10,20,30,40,50};
+        System.out.println("Elements of the array are : ");
+        for(int i=0;i<a.length;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+        Scanner sc = new Scanner(System.in);
+//tO READ AND PRINT SUM OF ARRAY ELEMENTS 
+        System.out.print("Enter the number of elements : ");
+        int n=sc.nextInt();
+        int[] a=new int[n];
+        int sum=0;
+        System.out.print("Enter the array elements : ");
+        for(int i=0;i<n;i++)
+        {
+            a[i]=sc.nextInt();
+            sum=sum+a[i];
+        }
+        System.out.print("The array elements are : ");
+        for(int i=0;i<n;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+        System.out.println("\nSum of array elements is "+sum);
+        }
+       }
