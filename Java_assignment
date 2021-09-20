@@ -1,0 +1,197 @@
+//1. To find whether a given year is leap year or not.
+package com.torryharris;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        int year;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter any Year:");
+        year = scan.nextInt();
+        scan.close();
+        boolean isLeap = false;
+        if(year % 4 == 0) {
+            isLeap = true;
+        }
+        if(isLeap==true)
+            System.out.println(year + " is a Leap Year.");
+        else
+            System.out.println(year + " is not a Leap Year.");
+    }
+}
+
+
+//OUTPUT
+(1).
+"C:\Program Files\Java\jdk1.8.0\bin\java.exe" "-javaagent:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=51010:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar;C:\Users\priyanka_ramesh\IdeaProjects\activity\out\production\activity" com.torryharris.Main
+Enter any Year:
+1992
+1992 is a Leap Year.
+
+Process finished with exit code 0
+
+(2).
+Enter any Year:
+2010
+2010 is not a Leap Year.
+
+Process finished with exit code 0
+
+//2. To find armstrong number
+
+package com.torryharris;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+int temp, rem,result = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number : ");
+        int n=sc.nextInt();
+        temp = n;
+
+        while (temp != 0)
+        {
+            rem = temp % 10;
+            result += Math.pow(rem, 3);
+            temp /= 10;
+        }
+
+        if(result == n)
+            System.out.println(n + " is an Armstrong number.");
+        else
+            System.out.println(n + " is not an Armstrong number.");
+    }
+}
+
+
+//OUTPUT
+(1)
+"C:\Program Files\Java\jdk1.8.0\bin\java.exe" "-javaagent:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=59345:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar;C:\Users\priyanka_ramesh\IdeaProjects\activity\out\production\activity" com.torryharris.Main
+Enter a number : 153
+153 is an Armstrong number.
+
+Process finished with exit code 0
+
+(2)
+Enter a number : 165
+165 is not an Armstrong number.
+
+Process finished with exit code 0
+
+
+//3. To find a perfect number
+
+package com.torryharris;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+ long n,p;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a number");
+        n=sc.nextLong();
+        p=perfectOrNot(n);
+        if(p==n)
+            System.out.println(n+" is a perfect number");
+        else
+            System.out.println(n+" is not a  perfect number");
+    }
+    static long perfectOrNot(long num)
+    {
+        long sum=0;
+        for(int i=1;i<=num/2;i++)
+        {
+            if(num%i==0)
+            {
+                sum+=i;
+            }
+        }
+        return sum;
+        }
+    }
+    
+//OUTPUT
+(1)
+"C:\Program Files\Java\jdk1.8.0\bin\java.exe" "-javaagent:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=63017:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar;C:\Users\priyanka_ramesh\IdeaProjects\activity\out\production\activity" com.torryharris.Main
+Enter a number
+9
+9 is not a  perfect number
+
+Process finished with exit code 0
+
+(2)
+Enter a number
+496
+496 is a perfect number
+
+Process finished with exit code 0
+
+ 
+//4. To print multiplication table
+package com.torryharris;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+        System.out.println("enter a number");
+        int num = sc.nextInt();
+        for (int i = 1; i <= 10; i++)
+        {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+//OUTPUT:
+"C:\Program Files\Java\jdk1.8.0\bin\java.exe" "-javaagent:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=50977:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar;C:\Users\priyanka_ramesh\IdeaProjects\activity\out\production\activity" com.torryharris.Main
+enter a number
+6
+6 x 1 = 6
+6 x 2 = 12
+6 x 3 = 18
+6 x 4 = 24
+6 x 5 = 30
+6 x 6 = 36
+6 x 7 = 42
+6 x 8 = 48
+6 x 9 = 54
+6 x 10 = 60
+
+Process finished with exit code 0
+
+
+//5. To find lcm and hcf of 2 numbers
+package com.torryharris;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+    int temp1, temp2, num1, num2, temp, hcf, lcm;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter First Number: ");
+        num1 = scanner.nextInt();
+        System.out.print("Enter Second Number: ");
+        num2 = scanner.nextInt();
+        scanner.close();
+
+        temp1 = num1;
+        temp2 = num2;
+
+        while(temp2 != 0){
+            temp = temp2;
+            temp2 = temp1%temp2;
+            temp1 = temp;
+        }
+
+        hcf = temp1;
+        lcm = (num1*num2)/hcf;
+
+        System.out.println("HCF of input numbers: "+hcf);
+        System.out.println("LCM of input numbers: "+lcm);
+    }
+}
+//OUTPUT
+"C:\Program Files\Java\jdk1.8.0\bin\java.exe" "-javaagent:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=63969:C:\Users\priyanka_ramesh\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0\jre\lib\rt.jar;C:\Users\priyanka_ramesh\IdeaProjects\activity\out\production\activity" com.torryharris.Main
+Enter First Number: 10
+Enter Second Number: 35
+HCF of input numbers: 5
+LCM of input numbers: 70
+
+Process finished with exit code 0
