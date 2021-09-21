@@ -1,0 +1,23 @@
+package com.torryharris;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+int x = 3, y = 5, z = 10;
+        int res1 = z + ++y - y + z + ++x;
+        // 10 + 6 - 6 + 10 + 4 = 24
+        System.out.println(res1);
+
+        int res2 = ++z + y - y + z + x++;
+        //11 + 6 - 6 + 11 + 4 = 26
+        System.out.println(res2);
+
+        int res3 = z + ++y - y++ + ++z + ++x;
+        // 11 + 7 - 7 + 12 + 6 = 29
+
+        System.out.println(res3);
+ }
+ }      
