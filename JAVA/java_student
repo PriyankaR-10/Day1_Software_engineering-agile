@@ -1,0 +1,47 @@
+package com.torryharris;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Student s1 = new Student(10,"Priyanka",56,76,65);
+        System.out.println(s1);
+        //if toString() is not implemented and object is printed we get the references(addr) of the obj
+    }
+}
+
+--------------------------------------------------------
+package com.torryharris;
+
+public class Student {
+    private int regNo;
+    private String name;
+    private int s1;
+    private int s2;
+    private int s3;
+
+    public Student(int regNo, String name, int s1, int s2, int s3) {
+        this.regNo = regNo;
+        this.name = name;
+        this.s1 = s1;
+        this.s2 = s2;
+        this.s3 = s3;
+    }
+    private double calc_percentage()
+    {
+        return((s1+s2+s3)/3);
+    }
+
+    /*@Override
+    public String toString() {
+        return "Student{" + "regNo=" + regNo + ", name='" + name + '\'' +
+                ", s1=" + s1 +
+                ", s2=" + s2 +
+                ", s3=" + s3 + " Percentage Scored : "+calc_percentage()+
+                '}';
+    }*/
+}
+
+----------------------------------------------------------------
+output:
+
+Student{regNo=10, name='Priyanka', s1=56, s2=76, s3=65 Percentage Scored : 65.0}
