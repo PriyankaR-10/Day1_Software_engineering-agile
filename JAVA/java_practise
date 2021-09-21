@@ -1,0 +1,105 @@
+package com.torryharris;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+        Scanner sc = new Scanner(System.in);
+        /*System.out.println("Enter the book details");
+        int bookId1 = sc.nextInt();
+        String bookName1 = sc.next();
+        int bookPrice1 = sc.nextInt();
+        book book1 = new book(bookId1,bookName1,bookPrice1);
+        System.out.println(book1); // toString() works implicitly if the object is printed
+//        book book2 = new book(200,"python",600);
+//        System.out.println(book2);*//*
+
+        System.out.println("Enter no. of elements in book array");
+        int len = sc.nextInt();
+        book[] book_a = new book[len];
+        System.out.println("Enter the book details");
+        for(int i=0;i<book_a.length;i++)
+        {
+          int bookId = sc.nextInt();
+          sc.nextLine();
+          String bookName = sc.nextLine();
+          int bookPrice = sc.nextInt();
+          book_a[i] = new book(bookId,bookName,bookPrice);
+        }
+        System.out.println("The book details are as follows ");
+        *//*for(int i=0;i<book_a.length;i++)
+        {
+            System.out.println(book_a[i]);
+        }*//*
+        //Enhanced FOR loop
+        for(book book1:book_a)
+        {
+            System.out.println(book1);
+        }
+      */
+        customer c1 = new customer(32,"priya",2332,5);
+        System.out.println(c1);
+       // System.out.println("Bill Amount : "+c1.calc_billamt());
+          sc.close();
+    }
+}
+-----------------------------------------------------------------------
+package com.torryharris;
+public class book {
+    //instance var/member var: describes the object attributes
+    int bookId;
+    String bookName;
+    int bookPrice;
+
+    //method in OOPS called as constructor : to construct with initial values
+    public book(int bookId, String bookName, int bookPrice)
+    {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.bookPrice = bookPrice;
+    }
+    //print the book objecr : toString() returning a str
+    @Override
+    public String toString() {
+        return "book{" +
+                "bookId=" + bookId +
+                ", bookName='" + bookName + '\'' +
+                ", bookPrice=" + bookPrice +
+                '}';
+    }
+}
+---------------------------------------------------------------------
+package com.torryharris;
+
+public class customer {
+    private int custId;
+    private String custName;
+    private int unitsConsumed;
+    private int unitPrice;
+
+    public customer(int custId, String custName, int unitsConsumed, int unitPrice) {
+        this.custId = custId;
+        this.custName = custName;
+        this.unitsConsumed = unitsConsumed;
+        this.unitPrice = unitPrice;
+    }
+    private int calc_billamt()
+    {
+        return(unitsConsumed*unitPrice);
+    }
+
+    @Override
+    public String toString() {
+        return "customer{" +
+                "custId=" + custId +
+                ", custName='" + custName + '\'' +
+                ", unitsConsumed=" + unitsConsumed +
+                ", unitPrice=" + unitPrice + "Bill Amount : "+calc_billamt()+
+                '}';
+    }
+}
+------------------------------------------------------------------------------------------
+OUTPUT:
+customer{custId=32, custName='priya', unitsConsumed=2332, unitPrice=5Bill Amount : 11660}
