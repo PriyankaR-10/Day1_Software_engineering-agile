@@ -1,0 +1,49 @@
+package com.torryharris.mainpack;
+
+import com.torryharris.spack.Person;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Person p1 = new Person(100,"priyanka");
+        Person p2 = new Person(102,"sneha");
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(Person.getCount());
+      //  System.out.println(Person.count);
+    }
+}
+//SPACK
+package com.torryharris.spack;
+public class Person
+{
+    private static int count;
+    private int pId;
+    private String pName;
+
+    static
+    {
+        count=0;
+    }
+    public Person(int pId, String pName) {
+        this.pId = pId;
+        this.pName = pName;
+        ++count;
+    }
+    @Override
+    public String toString() {
+        return "Person{" +
+                "pId=" + pId +
+                ", pName='" + pName + '\'' +
+                '}';
+    }
+    public static int getCount()
+    {
+        return count;
+    }
+
+}
+//OUTPUT
+Person{pId=100, pName='priyanka'}
+Person{pId=102, pName='sneha'}
+2
