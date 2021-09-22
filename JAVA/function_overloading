@@ -1,0 +1,91 @@
+//MAIN
+package com.torryharris.mainpack;
+import com.torryharris.utility.Average;
+import com.torryharris.utility.Summation;
+import com.torryharris.utility.Tax;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        /*Summation sob = new Summation();
+        System.out.println(sob.add(10,10));
+        System.out.println(sob.add(3,54.3F,43.3232));
+        System.out.println(sob.add("Priyanka"," Ramesh"));*/
+
+        /*Tax t1 = new Tax();
+        System.out.println("Tax calculated for consultant : "+t1.calc_tax(20000,'C'));
+        System.out.println("Tax calculated for employee: "+t1.calc_tax(20000));*/
+
+        Average a1 = new Average();
+        System.out.println("Average of given numbers : "+a1.calc_avg(10,20,90,67,98));
+        System.out.println(a1.calc_avg(10,10));
+        System.out.println("Average of given numbers : "+a1.calc_avg(32,322,54));
+        System.out.println("Average of given numbers : "+a1.calc_avg(10,1552l,15.5,20.5,20.5));
+
+    }
+}
+//AVERAGE FUNCTION
+package com.torryharris.utility;
+public class Average
+{
+    // Demo for '...' (generic operator)operator in java
+    public double calc_avg(int ...numbers)
+    {
+        int sum=0;
+        for(int n:numbers)
+        {
+            sum+=n;
+        }
+        return(sum/numbers.length);
+    }
+    public double calc_avg(int d, long l, double ...numbers)
+    {
+        double sum=d+l;
+        for(double x:numbers)
+        {
+            sum+=x;
+        }
+        return(sum/(numbers.length+2));
+    }
+}
+//SUMMATION
+package com.torryharris.utility;
+
+public class Summation
+{
+    public int add(int x, int y)
+    {
+        return(x+y);
+    }
+    public double add(int x,float y,double z)
+    {
+        return(x+y+z);
+    }
+    public String add(String str1, String str2)
+    {
+        return(str1+str2);
+    }
+}
+//TAX
+package com.torryharris.utility;
+public class Tax
+{
+    public double calc_tax(long amt, char status)
+    {
+        return(amt*0.1);
+    }
+
+    public int calc_tax(long amt)
+    {
+        return((int)(amt*0.25));
+    }
+
+}
+
+//OUTPUT:
+
+Tax calculated for consultant : 2000.0
+Tax calculated for employee: 5000
+
+Process finished with exit code 0
