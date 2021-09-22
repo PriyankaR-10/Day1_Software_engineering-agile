@@ -1,0 +1,64 @@
+//MAIN
+package com.torryharris.mainpack;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Address addrs = new Address(17,"brigade","bangalore","karanataka",560016);
+	    Person p1 = new Person(100,"priya",addrs);
+        System.out.println(p1);
+    }
+}
+
+//PERSON
+package com.torryharris.mainpack;
+
+public class Person {
+    private int personId;
+    private String personName;
+    private Address addr;
+
+    public Person(int personId, String personName, Address addr) {
+        this.personId = personId;
+        this.personName = personName;
+        this.addr = addr;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "personId=" + personId +
+                ", personName='" + personName + '\'' +
+                ", addr=" + addr +
+                '}';
+    }
+}
+//ADDRESS
+package com.torryharris.mainpack;
+public class Address
+{
+    private int doorNo;
+    private String steet;
+    private String city;
+    private String state;
+    private int pincode;
+
+    public Address(int doorNo, String steet, String city, String state, int pincode) {
+        this.doorNo = doorNo;
+        this.steet = steet;
+        this.city = city;
+        this.state = state;
+        this.pincode = pincode;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "doorNo=" + doorNo +
+                ", steet='" + steet + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", pincode=" + pincode +
+                '}';
+    }
+}
