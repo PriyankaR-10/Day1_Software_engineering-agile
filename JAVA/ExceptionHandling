@@ -1,0 +1,48 @@
+package com.torryharris.mainpack;
+public class Main
+{
+    public static void main(String[] args)
+    {
+	    int result = 0;
+        //ArrayIndexOutOfBoundsException
+        // one try block can have many catch blocks.....
+        try // also called as Anticipation Block
+        {
+            int n1 = Integer.parseInt(args[0]);//1st - command line arg
+            int n2 = Integer.parseInt(args[1]);
+            //NumberFormatException - when the input are of diff datatypes from the declared datatypes
+            result = n1/n2; //ArithmeticException - when divisior variable is declared as 0
+        }
+        catch (NumberFormatException a)// called as exception handler block
+        {
+            System.out.println("enter a valid input(numerics) \n"+a.getMessage());
+        }
+        catch (ArithmeticException a)// called as exception handler block
+        {
+            System.out.println("Cannot be divided by 0 \n"+a);
+        }
+        catch (ArrayIndexOutOfBoundsException a)// called as exception handler block
+        {
+            System.out.println("Enter some values\n"+a);
+        }
+        // once catch is executed then try block will not be executed
+        finally // whether an exception is encountered or not this finally block will be executed
+        {
+            System.out.println(result);
+        }
+        System.out.println("END OF THE PROGRAM");
+    }
+}
+
+//OUTPUT: FOR NUMERICEXCEPTION
+enter a valid input(numerics) 
+For input string: "good"
+0
+END OF THE PROGRAM
+
+Process finished with exit code 0
+
+//OUTPUT
+2
+END OF THE PROGRAM
+
