@@ -1,0 +1,163 @@
+//MAIN FUNCTION
+
+package com.torryharris.mainpack;
+
+import com.torryharris.Emppack.Employee;
+import com.torryharris.Exceptionpack.AgeLimitException;
+import com.torryharris.Exceptionpack.InsufficientLeaveException;
+import com.torryharris.cpack.citizen;
+
+public class Main
+{
+
+    public static void main(String[] args)
+    {
+        /*Employee emp1 = new Employee(100,15);
+        System.out.println(emp1);
+        try {
+            System.out.println(emp1.applyLeave(50));
+        }
+        catch (InsufficientLeaveException e)
+        {
+            e.printStackTrace();
+        }
+        //System.out.println(emp1.applyLeave(10));
+        System.out.println(emp1);*/
+        citizen c1=new citizen(1234324,22,"priya");
+        try {
+            System.out.println(c1);
+            System.out.println(c1.checkAge());
+        } catch (AgeLimitException e) {
+            //  e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+//EXCEPTION PACK
+
+package com.torryharris.Exceptionpack;
+//This custom Exception is registered as checked Exceptions
+public class InsufficientLeaveException extends Exception
+{
+    private String msg;
+
+    public InsufficientLeaveException(String msg){
+        this.msg=msg;
+    }
+
+    @Override
+    public String getMessage()
+    {
+        return msg;
+    }
+}
+
+package com.torryharris.Exceptionpack;
+
+public class AgeLimitException extends Throwable {
+    private String msg;
+
+    public AgeLimitException(String msg){
+        this.msg=msg;
+    }
+
+    @Override
+    public String getMessage()
+    {
+        return msg;
+    }
+}
+/*
+
+package com.torryharris.Emppack;
+public class AgeLimitException extends Exception{
+    {
+        private String msg;
+
+    public AgeLimitException(String msg){
+        this.msg=msg;
+    }
+
+        @Override
+        public String getMessage()
+        {
+            return msg;
+        }
+    }
+}
+*/
+
+//EMP-PACK
+
+package com.torryharris.Emppack;
+
+import com.torryharris.Exceptionpack.InsufficientLeaveException;
+
+public class Employee
+{
+    private int empId;
+    private int bLeave;
+
+    public Employee(int empId, int bLeave)
+    {
+        this.empId = empId;
+        this.bLeave = bLeave;
+    }
+
+    public String applyLeave(int n) throws InsufficientLeaveException
+    {
+        if(bLeave < n)
+            throw new InsufficientLeaveException("Insufficient Leave....");
+        else
+            bLeave -= n;
+            return("leave sanctioned..... Happy time!!!");
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empId=" + empId +
+                ", bLeave=" + bLeave +
+                '}';
+    }
+}
+
+//CPACK
+
+package com.torryharris.cpack;
+
+
+import com.torryharris.Exceptionpack.AgeLimitException;
+
+public class citizen {
+    private int adhaarId;
+    private int age;
+    private String name;
+
+    public citizen(int adhaarId, int age, String name) {
+        this.adhaarId = adhaarId;
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "citizen{" +
+                "adhaarId=" + adhaarId +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public String checkAge() throws AgeLimitException {
+        if (age < 18) {
+            throw new AgeLimitException("You are below 18 years");
+        }
+        if (age <= 75 && age >= 18) {
+            return ("You're eligible for license ");
+        } else {
+            throw new AgeLimitException("You are above 75 years");
+        }
+    }
+}
