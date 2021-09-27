@@ -1,0 +1,23 @@
+package com.torryharris.mainpack;
+import java.util.*;
+public class Main
+{
+
+    public static void main(String[] args)
+    {
+        //queues are implemented using linkedlist
+        Queue<String> q = new LinkedList<String>();
+        q.add("java");
+        q.add("python");
+        q.add(".Net");
+        q.add("html5");
+
+        //add to rear end and remove from front end... the queue follows FIFO principle
+        System.out.println(q);
+        System.out.print("Element to be removed : "+q.poll());
+        System.out.println("\nAfter an element is removed");
+        System.out.println(q);
+        System.out.print("The peek element is : "+q.peek());//does not remove the element
+        System.out.println("\n"+q);
+    }
+}
