@@ -1,0 +1,139 @@
+package com.torryharris.mainpack;
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Map<Integer,String> mp = new HashMap<Integer,String>();
+        //method to insert objects in map(hashMap)
+        //to organize the objects it takes the hashcode of the key elements
+        //latest value will override the duplicated key value
+        //no order of insertion is followed
+        mp.put(100,"books");
+        mp.put(100,"pen");
+        mp.put(100,"books");
+        mp.put(null,null);
+        mp.put(250,null);
+        mp.put(350,"pencil");
+        System.out.println(mp);
+//Linkedhashmap follows order of insertion
+        Map<Integer,String> lmp = new LinkedHashMap<Integer,String>();
+        lmp.put(100,"books");
+        lmp.put(200,"pen");
+        lmp.put(100,"books");
+        lmp.put(null,null);
+        lmp.put(250,null);
+        lmp.put(350,null);
+        System.out.println(lmp);
+
+       /* Map<Integer,String> tm = new TreeMap<Integer,String>();
+        tm.put(100,"books");
+        tm.put(200,"pen");
+        tm.put(100,"books");
+        tm.put(null,null);
+        tm.put(250,null);
+        tm.put(350,null);*/
+      //  System.out.println(tm);
+
+        Map<Integer,String> hb = new Hashtable<Integer,String>();
+        hb.put(100,"books");
+        hb.put(200,"pen");
+        hb.put(100,"books");
+     //   hb.put(null,null);
+        hb.put(250,"pencil");
+        hb.put(350,"eraser");
+        System.out.println(hb);
+    }
+}
+----------------------------------------------------------------------------
+//CPACK
+
+package com.torryharris.cpack;
+
+public class Customer
+{
+    private int id;
+    private String name;
+
+    public Customer(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+}
+
+
+//MAINPACK
+
+package com.torryharris.mainpack;
+
+import com.torryharris.cpack.Customer;
+
+import java.util.*;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        /*//Product Store : which can hold the name and its price
+        Map<String,Integer> hm = new HashMap<String,Integer>();
+        hm.put("sofa",50000);
+        hm.put("table",10000);
+        hm.put("chair",2000);
+        //System.out.println(hm);
+
+        //can we access either of the parameter individually nor both together
+        //no duplicates are allowed
+        System.out.println("Kes are : "+hm.keySet());//prints only key
+        System.out.println("Values are : "+hm.values());//prints only values
+        System.out.println(hm.entrySet());
+
+        //To iterate the Map(key and value pair)
+        //through key values can be accessed
+        System.out.println("printing the map elements using for loop");
+        for(String key:hm.keySet())
+        {
+            System.out.println(key+ " : "+hm.get(key));
+        }
+        int amt=0;
+        for(String key:hm.keySet())
+        {
+            amt = amt+hm.get(key);
+        }
+        System.out.println("Total Amount : "+amt);*/
+        /*HashMap<Customer,Integer> custmap = new HashMap<Customer,Integer>();
+        custmap.put(new Customer(10,"priyanka"),3000);
+        custmap.put(new Customer(20,"sneha"),7000);
+        custmap.put(new Customer(30,"ramesh"),5000);
+        for(Customer c:custmap.keySet())
+        {
+            System.out.println(c+"  "+custmap.get(c));
+        }
+        for(Customer c:custmap.keySet())
+        {
+            System.out.println(c+" : "+c.hashCode());
+        }
+        int total=0;
+        for(Customer c:custmap.keySet())
+        {
+            total += custmap.get(c);
+        }
+        System.out.println("Total sales amount : "+total);*/
+
+        HashMap<String,String> smap = new HashMap<String,String>();
+        smap.put("Karnataka","Bangalore");
+        smap.put("TN","Chennai");
+        for(String state:smap.keySet())
+        {
+            System.out.println(state+" : "+smap.get(state));
+        }
+    }
+}
