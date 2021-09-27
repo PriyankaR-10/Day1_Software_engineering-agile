@@ -1,0 +1,87 @@
+//SET
+package com.torryharris.mainpack;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Set s1 = new HashSet();//implementation of set
+        //method used to insert elements in any collection is add()
+
+        s1.add(1); //Interger
+        s1.add(12.5);//Double
+        s1.add("java");//String
+        s1.add(null); // null(not defined) is allowed in Set
+        s1.add(12.3F);//Float
+        //s1 is considering all the obj added as objs of obj class
+        System.out.println(s1);//order of printing follows unordered set i.e, it doesn't prints in the order of insertion
+        //HashSet organizes obj based on its hashcode
+
+        //{Set ---->HashSet()}
+        //to cast a set to a particular data-type ---> we need to specify generic type of set
+        //no order of insertion is followed
+        Set<String> s2 = new HashSet<String>();
+        s2.add("Priyanka");
+        s2.add("Ramesh");
+        s2.add("Priyanka"); //no duplicates are allowed
+        s2.add("xxxx");
+        s2.add("aa");
+        System.out.println(s2);
+
+        //{Set <----HashSet<------LinkedSet>}
+        //LINKED HASHSET - Unsorted but ordered set and also follows order of insertion
+        Set <String> s3 = new LinkedHashSet<String>();
+        s3.add("Priyanka");
+        s3.add("Ramesh");
+        s3.add("Priyanka"); //no duplicates are allowed
+        s3.add("xxxx");
+        s3.add("aa");
+        System.out.println(s3);
+
+        //{Set <----SortedSet<------NavigableSet<---------TreeSet}
+        //TREESET - sortedSet according to natural ordering is maintained
+        Set<String> s4 = new TreeSet<String>();
+        s4.add("Priyanka");
+        s4.add("Ramesh");
+        s4.add("Sneha"); //no duplicates are allowed
+        s4.add("Dayanitha");
+        s4.add("Prasad");
+        s4.add("Prasad");//no duplicates are allowed
+        System.out.println(s4);
+        System.out.println(s4.hashCode());
+    }
+}
+--------------------------------------------------------------------------------------------
+//VECTOR
+package com.torryharris.mainpack;
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args)
+    {
+	    //Vector is synchronized while ArrayList is not
+        //vectors are threat safe
+        Vector<String> v = new Vector<String>();
+        v.add("priyanka");
+        v.add("ramesh");
+        v.add("sneha");
+
+        Enumeration<String> e = v.elements();
+        System.out.println("To print using Enumeration");
+        while(e.hasMoreElements())
+        {
+            System.out.print(e.nextElement()+" ");
+        }
+        System.out.println("\nTo print using Iterator");
+        Iterator<String> it = v.iterator();
+        while(it.hasNext())
+        {
+            System.out.print(it.next()+" ");
+        }
+    }
+}
