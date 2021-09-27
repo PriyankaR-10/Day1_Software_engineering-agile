@@ -1,0 +1,82 @@
+package com.torryharris.mainpack;
+
+import com.torryharris.mydatepack.MyDate;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        MyDate d1 = new MyDate(27,9,2021);
+        MyDate d2 = new MyDate(27,9,2021);
+        MyDate d3 = d1;
+        System.out.println(d1.equals(d2)); // on default compares the ref and doesn't compares the contents
+
+        //to compare the contents we need to override the equals() of the objs
+        System.out.println("D1 date is "+d1+"\n"+"D3 date is "+d3);
+        System.out.println(d1.equals(d3));
+        // == operator always compares the refs
+        System.out.println("Using == operator");
+        System.out.println(d1==d2);
+        System.out.println(d1==d3);
+
+        //equals() and hashcode() are related/dependent on each other
+        //if 2 objs are equal their hashcode should also be equal
+        //it is mandatory that if we override equals() then we should also override hashcode()
+
+        System.out.println("D1 hashcode : "+d1.hashCode());
+        System.out.println("D2 hashcode : "+d2.hashCode());
+        System.out.println("D3 hashcode : "+d3.hashCode());
+
+        //In String class the equals() is overridden to check its contents
+
+        String s1 = "hello";
+        String s2 = "hello";
+        String s3 = new String("hello");
+        System.out.println("String comparisons"+"\n"+s1.equals(s2)); //-->true
+        System.out.println(s1.equals(s3)); //-->true
+        System.out.println(s1==s3); //-->false
+        System.out.println(s1==s2);
+    }
+}
+
+
+package com.torryharris.mydatepack;
+//to illustrate equals() and hashcode() of obj class
+public class MyDate
+{
+    private int dd;
+    private int mm;
+    private int yy;
+
+    public MyDate(int dd, int mm, int yy) {
+        this.dd = dd;
+        this.mm = mm;
+        this.yy = yy;
+    }
+//parameter passed to the equals() is object class ref ----> o
+    @Override
+    public boolean equals(Object o)
+    {
+        MyDate d = (MyDate) o; //down casting
+        //this--->d1 and o---->d3
+        if((this.dd == d.dd)&&(this.mm == d.mm)&&(this.yy == d.yy))
+            return true;
+        else
+            return false;
+    }
+
+   /* @Override
+    public int hashCode() {
+        //XOR is a bitwise operator
+        return(dd^mm^yy);//XOR operator taken to give a hashcode using dd,mm,yy as the key
+    }*/
+
+    @Override
+    public String toString() {
+        return "MyDate{" +
+                "dd=" + dd +
+                ", mm=" + mm +
+                ", yy=" + yy +
+                '}';
+    }
+}
