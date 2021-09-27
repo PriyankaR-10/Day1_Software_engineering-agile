@@ -1,0 +1,75 @@
+package com.torryharris.mainpack;
+
+import java.util.*;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+       /* //dynamic memory is allocated : it's dynamically growing array
+        //on default size of array is 10
+        //Duplicates are allowed
+        //ArrayList increments 50% of the current size in its capacity
+        List<String> l1 = new ArrayList<String>();
+        l1.add("priyanka");
+        l1.add("sneha");
+        l1.add("prasad");
+        l1.add("ramesh");
+        l1.add("priyanka");
+        System.out.println(l1);
+
+        //To insert an element at an index value
+        l1.add(1,"harshini");
+        System.out.println(l1);
+        l1.remove("priyanka"); //or l1.remove(0)
+        System.out.println(l1);
+
+        //To Merge 2 arrays
+        ArrayList<String> l2 = new ArrayList<String>();
+        l2.add("one");
+        l2.add("Two");
+        l2.add("Three");
+
+        l1.addAll(1,l2);
+        System.out.println(l1);
+
+        for(int i=0;i< l1.size();i++)
+        {
+            System.out.print(l1.get(i)+" ");
+        }
+        //Enhanced for loop
+        System.out.println();
+        for(String s:l1)
+        {
+            System.out.print(s+"  ");
+        }
+
+        //We can use Iterator class obj for interating any collection
+        System.out.println();
+        Iterator<String> it = l1.iterator();
+        while(it.hasNext())
+        {
+            System.out.print(it.next().toUpperCase()+" ");
+        }*/
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> li1 = new ArrayList<Integer>();
+        System.out.print("Enter no of elements int the ArrayList: ");
+        int n= sc.nextInt();
+        System.out.println("Enter the elements");
+        for (int i=0;i<n;i++)
+        {
+            int ele = sc.nextInt();
+            li1.add(ele);
+        }
+        int sum=0;
+        Iterator<Integer> it1 = li1.iterator();
+        while (it1.hasNext())
+        {
+            int ele1 = it1.next();
+            System.out.print(ele1+" ");
+            sum+=ele1;
+        }
+        System.out.println("\n"+"Sum of elements in the arraylist : "+sum);
+        sc.close();
+    }
+}
