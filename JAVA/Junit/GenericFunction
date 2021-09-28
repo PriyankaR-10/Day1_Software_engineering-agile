@@ -1,0 +1,28 @@
+package com.torryharris.mainpack;
+
+import com.torryharris.tpack.Test;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+	    Integer[] intarr = {3,5,7,9};
+        Test.printArray(intarr);
+        String[] sarr = {"Priyanka","sneha","daya"};
+        Test.printArray(sarr);
+        
+    }
+}
+----------------------------------------------------------------
+package com.torryharris.tpack;
+
+public class Test
+{
+    public static <T> void printArray(T[] arr)
+    {
+        for(T ele:arr)
+        {
+            System.out.print(ele+" ");
+        }
+    }
+}
