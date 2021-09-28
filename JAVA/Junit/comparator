@@ -1,0 +1,98 @@
+package com.torryharris.mainpack;
+import com.torryharris.comparatorpack.AgeComparator;
+import com.torryharris.comparatorpack.NameComparator;
+import com.torryharris.ppack.Person;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+        ArrayList<Person> p = new ArrayList<Person>();
+        p.add(new Person(1,"priya",22));
+        p.add(new Person(2,"sneha",20));
+        p.add(new Person(3,"harshini",30));
+        p.add(new Person(4,"nirmala",28));
+        p.add(new Person(5,"prasad",24));
+
+        System.out.println(p);
+        Collections.sort(p,new AgeComparator());
+        System.out.println(p);
+        Collections.sort(p,new NameComparator());
+        System.out.println(p);
+    }
+}
+------------------------------------------------------------------------------
+package com.torryharris.ppack;
+
+public class Person
+{
+    private int id;
+    private String name;
+    private int age;
+
+    public Person(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+-------------------------------------------------------------------------------------
+//AGE COMPARATOR
+
+package com.torryharris.comparatorpack;
+import com.torryharris.ppack.Person;
+import java.util.Comparator;
+
+public class AgeComparator implements Comparator<Person>
+{
+    @Override
+    public int compare(Person p1, Person p2)
+    {
+        if(p1.getAge()> p2.getAge())
+            return 1;
+        else if(p1.getAge() == p2.getAge())
+            return 0;
+        else
+            return -1;
+    }
+}
+
+//NAME COMPARATOR
+
+package com.torryharris.comparatorpack;
+
+import com.torryharris.ppack.Person;
+
+import java.util.Comparator;
+
+public class NameComparator implements Comparator<Person>
+{
+    @Override
+    public int compare(Person p1, Person p2)
+    {
+        return (p1.getName().compareTo(p2.getName()));
+    }
+}
