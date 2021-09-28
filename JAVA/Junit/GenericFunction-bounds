@@ -1,0 +1,72 @@
+package com.torryharris.mainpack;
+
+import com.torryharris.tpack.Test;
+
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+        ArrayList<Integer> ilist = new ArrayList<Integer>();
+        ilist.add(10);
+        ilist.add(20);
+        ilist.add(10);
+        ilist.add(10);
+        ilist.add(10);
+        System.out.println(Test.sumOfList(ilist));
+
+        ArrayList<Double> olist = new ArrayList<Double>();
+        olist.add(10.0);
+        olist.add(20.0);
+        olist.add(10.0);
+        olist.add(10.0);
+        olist.add(10.0);
+        System.out.println(Test.sumOfList1(olist));
+
+        //unbounded demo
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(10);
+        list.add(20);
+        list.add(10);
+        list.add(10);
+        list.add(10);
+        System.out.println(Test.sumOfList2(olist));
+    }
+}
+------------------------------------------------------------------------------------
+package com.torryharris.tpack;
+
+import java.util.List;
+
+public class Test {
+    //Number is base claas for all numeric wrapper class(Integer,Double,Byte,Long,Short are subclass of Number base class)
+    public static Number sumOfList(List<? extends Number> nlist)
+    {
+        double s = 0.0;
+        for (Number n:nlist)
+        {
+            s+=n.doubleValue();
+        }
+        return s;
+    }
+    public static Number sumOfList1(List<? super Double> llist)
+    {
+        double s=0.0;
+        for (Object n:llist)
+        {
+            s+=((Number)n).doubleValue();
+        }
+        return s;
+    }
+    //unbounds
+    public static Number sumOfList2(List<?> list)
+    {
+        double s=0.0;
+        for (Object n:list)
+        {
+            s+=((Number)n).doubleValue();
+        }
+        return s;
+    }
+}
