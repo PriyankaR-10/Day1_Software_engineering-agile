@@ -1,0 +1,52 @@
+public class EvenOddClass
+{
+    public  boolean isEvenNumber(int number)
+    {
+        boolean result = false;
+        if(number%2 == 0)
+            return true;
+        return result;
+    }
+}
+---------------------------------------------------------
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class evenOddTest
+{
+    @org.junit.Test
+    public void test()
+    {
+        evenOddClass eo = new evenOddClass();
+        assertEquals(false,eo.isEvenNumver(11));
+    }
+}
+--------------------------------------------------------------
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestClass
+{
+    @Test
+    public void test()
+    {
+        int val1=5;
+        int val2=6;
+
+        assertTrue(val1<val2);
+        assertFalse(val1>val2);
+
+        String s1 = "abc";
+        String s2 = "abc";
+
+        //check if both the references are same
+        assertSame(s1,s2);
+
+        String[] arr={"one","two","three"};
+        String[] err={"one","two","three"};
+
+        assertArrayEquals(err,arr);
+        assertEquals(s1,s1);
+    }
+}
