@@ -1,0 +1,69 @@
+
+public class MessageUtil
+{
+    private String msg;
+
+    public MessageUtil(String msg)
+    {
+        this.msg = msg;
+    }
+
+    //Print the message
+    public String printMessage()
+    {
+        System.out.println(msg);
+        return(msg);
+    }
+
+    public String salutationMessage()
+    {
+        msg = "Hello"+msg;
+        System.out.println(msg);
+        return msg;
+    }
+}
+---------------------------------------------------
+import org.junit.Test;
+import org.junit.ComparisonFailure;
+import static org.junit.Assert.assertEquals;
+public class Test1
+{
+    String msg = "Priyanka";
+    MessageUtil mob=new MessageUtil(msg);
+    @Test
+    public void Test()
+    {
+        System.out.println("Inside TestClass testing Salutation methods");
+        msg="Hello"+msg;
+        assertEquals(msg,mob.salutationMessage());
+    }
+}
+---------------------------------------------------------------------------------
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class TestClass
+{
+    String msg = "Priyanka";
+    MessageUtil mob=new MessageUtil(msg);
+    @Test
+    public void Test()
+    {
+        System.out.println("Inside TestClass testing printMessage methods");
+        assertEquals(msg,mob.printMessage());
+    }
+}
+-------------------------------------------------------------------------------------
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+//import org.junit.runners.model.TestClass;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses(
+        {
+                TestClass.class,
+                Test1.class
+        })
+public class TestSuite {
+
+}
