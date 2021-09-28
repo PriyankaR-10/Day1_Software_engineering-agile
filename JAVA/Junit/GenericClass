@@ -1,0 +1,72 @@
+package com.torryharris.mainpack;
+import com.torryharris.gpack.Product;
+import com.torryharris.gpack.Test;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Test<String,String> tob = new Test<String,String>("hello","World!");
+        System.out.println(tob);
+
+        Test<Integer,String> tob1 = new Test<Integer,String>(100,"Priyanka");
+        System.out.println(tob1);
+
+        Test<Integer, Product> tob2 = new Test<Integer,Product>(100,new Product(50,"laptop"));
+        System.out.println(tob2);
+    }
+}
+----------------------------------------------------------------------------------------------------
+//Product
+
+package com.torryharris.gpack;
+
+public class Product
+{
+    private int pid;
+    private String pname;
+
+    public Product(int pid, String pname) {
+        this.pid = pid;
+        this.pname = pname;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "pid=" + pid +
+                ", pname='" + pname + '\'' +
+                '}';
+    }
+}
+-----------------------------------------------------------------------------------------------------
+//TEST
+
+package com.torryharris.gpack;
+
+public class Test <T,U>
+{
+    private T ob1;
+    private U ob2;
+
+    public Test(T ob1, U ob2) {
+        this.ob1 = ob1;
+        this.ob2 = ob2;
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "ob1=" + ob1 +
+                ", ob2=" + ob2 +
+                '}';
+    }
+
+    public T getOb1() {
+        return ob1;
+    }
+
+    public U getOb2() {
+        return ob2;
+    }
+}
