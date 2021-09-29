@@ -1,0 +1,33 @@
+package com.torryharris.mainpack;
+import java.io.*;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        File f1 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\c1.txt");//source file
+        File f2 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\dest1.txt");//destination file
+        try(FileInputStream input = new FileInputStream(f1);
+            BufferedInputStream bis = new BufferedInputStream(input);
+            FileOutputStream output = new FileOutputStream(f2);
+            BufferedOutputStream bos = new BufferedOutputStream(output);)
+        {
+            //to know size of a file we use available method
+            byte[] buffer = new byte[input.available()];
+            bis.read(buffer);
+            bos.write(buffer);
+            for(byte b:buffer)
+            {
+                System.out.println((char)b);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
