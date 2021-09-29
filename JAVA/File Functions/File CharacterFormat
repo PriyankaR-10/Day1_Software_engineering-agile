@@ -1,0 +1,40 @@
+package com.torryharris.mainpack;
+
+import java.io.*;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        File f1 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\c1.txt");//source file
+        File f2 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\c.txt");//destination file
+        //try with resource block with auto close option - resources are closed automatically
+        try (FileReader fr = new FileReader(f1);
+             BufferedReader br = new BufferedReader(fr);
+            // FileWriter fw = new FileWriter(f2);//creates a file and then write the contents
+             //if the file is existing it will overwrite the file
+             FileWriter fw = new FileWriter(f2,true);//append is defaulted to false
+             //to open a file in append mode we need to set option as true
+             BufferedWriter bw = new BufferedWriter(fw);)
+        {
+            String str;
+           // str=br.readLine();
+             while((str=br.readLine())!=null)
+            {
+                System.out.println(str);
+                bw.write(str);
+                bw.newLine();
+            }
+            System.out.println("Data appended successfully to file2");
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
