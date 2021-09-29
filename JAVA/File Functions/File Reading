@@ -1,0 +1,33 @@
+package com.torryharris.mainpack;
+import java.io.*;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        File f1 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\c1.txt");
+        try (FileReader fr = new FileReader(f1);
+            BufferedReader br = new BufferedReader(fr);)
+        {
+            String str;
+            str=br.readLine();
+            while(!str.equals("END"))
+            {
+                System.out.println(str);
+                str = br.readLine();
+            }
+            /*while((str=br.readLine())!=null))
+            {
+                System.out.println(str);
+            }*/
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
