@@ -1,0 +1,135 @@
+package BookOp;
+import Model.Book;
+import java.util.ArrayList;
+
+public interface BookOperations
+{
+    String addABook(Book book);//insert a book
+    ArrayList<Book> getAllBooks();//retrieve details
+    Book getABook(int Id);//search a book
+    String setBookPrice(int Id,int upPrice);//price and update price
+
+}
+
+package BookOp;
+
+import Model.Book;
+
+import java.util.ArrayList;
+
+public class BookOperationImpl implements BookOperations
+{
+    private ArrayList<Book> blist = new ArrayList<Book>();
+
+    @Override
+    public String addABook(Book book) {
+        blist.add(book);
+        return "Book added successfully!!!!";
+    }
+
+    @Override
+    public ArrayList<Book> getAllBooks() {
+        return blist;
+    }
+
+    @Override
+    public Book getABook(int Id) {
+        for(Book book:blist)
+        {
+            if(book.getId() == Id)
+                return book;
+        }
+        return null;
+    }
+
+    @Override
+    public String setBookPrice(int Id, int upPrice) {
+        Book book = getABook(Id);
+        book.setPrice(upPrice);
+        return "Book Price updated Successfully";
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------
+//BOOK MODEL
+
+package Model;
+
+public class Book
+{
+    private int Id;
+    private String Name;
+    private int price;
+
+    public Book(int id, String name, int price) {
+        Id = id;
+        Name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "Id=" + Id +
+                ", Name='" + Name + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
+----------------------------------------------------------------------------------------------
+//MainUIPack
+package Model;
+
+public class Book
+{
+    private int Id;
+    private String Name;
+    private int price;
+
+    public Book(int id, String name, int price) {
+        Id = id;
+        Name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "Id=" + Id +
+                ", Name='" + Name + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
