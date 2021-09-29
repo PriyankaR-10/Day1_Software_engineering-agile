@@ -1,0 +1,31 @@
+public class Main {
+    public static void main(String[] args) {
+        Customer c1 = new Customer(100,"Priya",10000);
+        System.out.println(c1);
+
+        Customer c2 = new Customer();
+        c2.setCustId(20);
+        c2.setCustName("sneha");
+        c2.setBal(5000);
+        System.out.println(c2.getCustName()+" : "+c2.getBal());
+
+        Customer c3 = new Customer(300,"ramesh",6000);
+        System.out.println(c3.getCustId()+" "+c3.getCustName()+" "+c3.getBal());
+
+    }
+}
+-------------------------------------------------------------------------------------
+import lombok.*;
+
+//Annotations
+@Getter
+@AllArgsConstructor
+@Setter
+@ToString
+@NoArgsConstructor
+public class Customer
+{
+    @Getter private int custId;
+    private String custName;
+    @Getter  private int bal;
+}
