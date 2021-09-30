@@ -1,0 +1,168 @@
+package MainUIpack;
+
+import BookOp.BookOperationImpl;
+import Model.Book;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BookStoreMain {
+    public static void main(String[] args) throws NullPointerException{
+        Scanner sc = new Scanner(System.in);
+        BookOperationImpl boi = new BookOperationImpl();
+        System.out.println("1. Add a Book");//Admin module
+        System.out.println("2. List all the Book");//Admin,user
+        System.out.println("3. Get a Book");//Admin, User
+        System.out.println("4. Update a Book Price");//Admin
+        System.out.println("5. Exit");
+        while (true)
+        {
+            System.out.println("Enter your Choice : ");
+            int choice = sc.nextInt();
+            switch (choice)
+            {
+                case 1:
+                {
+                    System.out.println("Enter the details of the book");
+                    int Id = sc.nextInt();
+                    String Name = sc.next();
+                    int price = sc.nextInt();
+                    Book book = new Book(Id,Name,price);
+                    System.out.println(boi.addABook(book));
+                    break;
+                }
+                case 2:
+                {
+                    ArrayList<Book> blist = boi.getAllBooks();
+                    for(Book book:blist)
+                    {
+                        System.out.println(book);
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    System.out.println("Enter the book Id to be searched");
+                    int Id = sc.nextInt();
+                    Book book = boi.getABook(Id);
+                    if(book != null)
+                        System.out.println(book);
+                    else
+                        System.out.println("Book does not exist in the store");
+                    break;
+                }
+                case 4:
+                {
+                    System.out.println("Enter the book Id to be updated");
+                    int Id = sc.nextInt();
+                    System.out.print("Enter the updated price of the book : ");
+                    int upPrice = sc.nextInt();
+                    System.out.println(boi.setBookPrice(Id,upPrice));
+                    break;
+                }
+                default:
+                    sc.close();
+                    System.out.println("Bye Bye!!!");
+                    System.exit(0);
+            }
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------
+//BookOperations
+
+package BookOp;
+
+import Model.Book;
+
+import java.util.ArrayList;
+
+public interface BookOperations
+{
+    String addABook(Book book);//insert a book
+    ArrayList<Book> getAllBooks();//retrieve details
+    Book getABook(int Id);//search a book
+    String setBookPrice(int Id,int upPrice);//price and update price
+}
+-----------------------------------------------------------------------------------------------------------------
+//BookOperationsImplementation
+
+package BookOp;
+
+import Model.Book;
+
+import java.util.ArrayList;
+
+public interface BookOperations
+{
+    String addABook(Book book);//insert a book
+    ArrayList<Book> getAllBooks();//retrieve details
+    Book getABook(int Id);//search a book
+    String setBookPrice(int Id,int upPrice);//price and update price
+}
+-------------------------------------------------------------------------------------------------------------
+//DBManager
+package BookOp;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBManager
+{
+    private static Connection con=null;
+    public static Connection getConnection()
+    {
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdatabase","root","priya@10");
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+}
+---------------------------------------------------------------------------------------------------------
+//BookModel
+
+package Model;
+
+public class Book
+{
+    private int Id;
+    private String Name;
+    private int price;
+
+    public Book(int id, String name, int price) {
+        Id = id;
+        Name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "Id=" + Id +
+                ", Name='" + Name + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
