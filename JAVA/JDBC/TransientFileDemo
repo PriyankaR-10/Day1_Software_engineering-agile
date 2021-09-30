@@ -1,0 +1,150 @@
+//Main
+package com.torryharris.mainpack;
+
+import com.torryharris.fpack.ReadObjectClass;
+import com.torryharris.fpack.WriteObjectClass;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+        WriteObjectClass wob = new WriteObjectClass();
+        wob.writeObject();
+
+        ReadObjectClass rob = new ReadObjectClass();
+        rob.ReadObject();
+
+
+    }
+}
+---------------------------------------------------------------------------
+//Student
+package com.torryharris.spack;
+
+import java.io.Serializable;
+
+public class Student implements Serializable
+{
+    private int id;
+    private int m1,m2,m3;
+    private transient int total;//total value need not to be saved
+
+    public Student(int id, int m1, int m2, int m3)
+    {
+        this.id = id;
+        this.m1 = m1;
+        this.m2 = m2;
+        this.m3 = m3;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getM1() {
+        return m1;
+    }
+
+    public int getM2() {
+        return m2;
+    }
+
+    public int getM3() {
+        return m3;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal()
+    {
+        this.total = m1+m2+m3;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", m1=" + m1 +
+                ", m2=" + m2 +
+                ", m3=" + m3 +
+                ", total=" + total +
+                '}';
+    }
+}
+----------------------------------------------------------------------------------------------
+//ReadObjectCLass
+
+package com.torryharris.fpack;
+
+import com.torryharris.spack.Student;
+
+import java.io.*;
+
+public class ReadObjectClass {
+    public void ReadObject() {
+        File f2 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\Student.txt");//destination file
+
+        try (FileInputStream input = new FileInputStream(f2);
+             ObjectInputStream in = new ObjectInputStream(input);)
+        {
+            System.out.println("DESERIALIZATION");
+            while(input.available()>0)
+            {
+                Student sob = (Student) in.readObject();
+                //sob.setTotal();
+                System.out.println(sob);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+}
+-------------------------------------------------------------------------------------------------------
+//WriteObjectClass
+package com.torryharris.fpack;
+
+import com.torryharris.spack.Student;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class WriteObjectClass
+{
+    public void writeObject()
+    {
+        File f2 = new File("C:\\Users\\priyanka_ramesh\\Desktop\\Student.txt");//destination file
+
+        try (FileOutputStream output = new FileOutputStream(f2);
+             ObjectOutputStream oos = new ObjectOutputStream(output);)
+        {
+            ArrayList<Student> slist = new ArrayList<Student>();
+            slist.add(new Student(1,54,23,54));
+            slist.add(new Student(2,65,54,76));
+            slist.add(new Student(3,76,76,73));
+
+            Iterator<Student> it = slist.iterator();
+            while(it.hasNext())
+            {
+                Student s = it.next();
+                s.setTotal();
+                System.out.println(s);
+                oos.writeObject(s);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+}
+}
