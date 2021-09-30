@@ -1,0 +1,270 @@
+package MainUIpack;
+
+import BookOp.BookOperationImpl;
+import Model.Book;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BookStoreMain {
+    public static void main(String[] args) throws NullPointerException{
+        Scanner sc = new Scanner(System.in);
+        BookOperationImpl boi = new BookOperationImpl();
+        System.out.println("1. Add a Book");//Admin module
+        System.out.println("2. List all the Book");//Admin,user
+        System.out.println("3. Get a Book");//Admin, User
+        System.out.println("4. Update a Book Price");//Admin
+        System.out.println("5. Add to cart and Billing");//customer
+        System.out.println("6. Exit");
+        while (true)
+        {
+            System.out.println("Enter your Choice : ");
+            int choice = sc.nextInt();
+            switch (choice)
+            {
+                case 1:
+                {
+                    System.out.println("Enter the details of the book");
+                    int Id = sc.nextInt();
+                    String Name = sc.next();
+                    int price = sc.nextInt();
+                    Book book = new Book(Id,Name,price);
+                    System.out.println(boi.addABook(book));
+                    break;
+                }
+                case 2:
+                {
+                    ArrayList<Book> blist = boi.getAllBooks();
+                    for(Book book:blist)
+                    {
+                        System.out.println(book);
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    System.out.println("Enter the book Id to be searched");
+                    int Id = sc.nextInt();
+                    Book book = boi.getABook(Id);
+                    if(book != null)
+                        System.out.println(book);
+                    else
+                        System.out.println("Book does not exist in the store");
+                    break;
+                }
+                case 4:
+                {
+                    System.out.println("Enter the book Id to be updated");
+                    int Id = sc.nextInt();
+                    System.out.print("Enter the updated price of the book : ");
+                    int upPrice = sc.nextInt();
+                    System.out.println(boi.setBookPrice(Id,upPrice));
+                    break;
+                }
+                case 5:
+                {
+                    CustoperationImpl cust = new CustoperationImpl();
+                    while(true)
+                    {
+                        String ch = "Y";
+                        System.out.println("Enter the bookId to cart : ");
+                        int Id = sc.nextInt();
+                        System.out.println("Enter the number of copies : ");
+                        int qty = sc.nextInt();
+                        Book book = boi.getABook(Id);
+                        cust.addToCart(book,qty);
+                        System.out.println("Do you want to continue adding : ");
+                        ch= sc.next();
+                        if(ch.charAt(0)=='N')
+                            break;
+                    }
+                    System.out.println("Transaction Id : "+cust.getTid()+" and Bill Amount : "+cust.getBill());
+                    break;
+                }
+                default:
+                    sc.close();
+                    System.out.println("Bye Bye!!!");
+                    System.exit(0);
+            }
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------
+//BookOperations
+
+package BookOp;
+
+import Model.Book;
+
+import java.util.ArrayList;
+
+public interface BookOperations
+{
+    String addABook(Book book);//insert a book
+    ArrayList<Book> getAllBooks();//retrieve details
+    Book getABook(int Id);//search a book
+    String setBookPrice(int Id,int upPrice);//price and update price
+}
+-----------------------------------------------------------------------------------------------------------------
+//BookOperationsImplementation
+
+package BookOp;
+
+import Model.Book;
+
+import java.util.ArrayList;
+
+public interface BookOperations
+{
+    String addABook(Book book);//insert a book
+    ArrayList<Book> getAllBooks();//retrieve details
+    Book getABook(int Id);//search a book
+    String setBookPrice(int Id,int upPrice);//price and update price
+}
+-------------------------------------------------------------------------------------------------------------
+//DBManager
+package BookOp;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBManager
+{
+    private static Connection con=null;
+    public static Connection getConnection()
+    {
+        try
+        {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdatabase","root","priya@10");
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return con;
+    }
+
+}
+---------------------------------------------------------------------------------------------------------
+//BookModel
+
+package Model;
+
+public class Book
+{
+    private int Id;
+    private String Name;
+    private int price;
+
+    public Book(int id, String name, int price) {
+        Id = id;
+        Name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "Id=" + Id +
+                ", Name='" + Name + '\'' +
+                ", price=" + price +
+                '}';
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+//CustomerOperations
+
+package custop;
+
+import Model.Book;
+
+public interface Custoperations
+{
+    void addToCart(Book book,int qty);
+    double getBill();
+}
+-------------------------------------------------------------------------------------------------------------------
+//CustomerOperations Implementation
+
+package custop;
+
+import BookOp.DBManager;
+import Model.Book;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+public class CustoperationImpl implements Custoperations
+{
+    private static int count = 1;
+    private final int tid;
+    ArrayList<Book> slist = new ArrayList<Book>();
+    private Map<Integer,Integer> smap = new HashMap<Integer,Integer>();//shopping Map
+
+    public CustoperationImpl()
+    {
+        this.tid = getCount();
+    }
+    private  static int getCount() {
+        Random rand = new Random();
+        count =  (int)(rand.nextInt(5000)+1000);
+        return count;
+    }
+    public int getTid()
+    {
+        return tid;
+    }
+
+    @Override
+    public void addToCart(Book book, int qty)
+    {
+        slist.add(book);
+        smap.put(book.getId(), book.getPrice()*qty);
+    }
+    @Override
+    public double getBill()
+    {
+        int totalamt=0;
+        for(Integer key:smap.keySet())
+        {
+            totalamt+=smap.get(key);
+        }
+        PreparedStatement ps = null;
+        Connection con = DBManager.getConnection();
+        String str = "insert into custtransaction values (?,?)";
+
+        try {
+            ps = con.prepareStatement(str);
+            ps.setInt(1,tid);
+            ps.setDouble(2,totalamt);
+
+            ps.executeUpdate();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+        return totalamt;
+    }
+}
