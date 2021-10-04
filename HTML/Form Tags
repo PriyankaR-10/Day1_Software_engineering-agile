@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM TAGS</title>
+</head>
+<body>
+<form action="/src/main/webapp/WEB-INF/index2.html" method="post">
+    <label>First-Name : </label>
+    <input type="text" name="fname" id="fname"><br>
+    <label>LAst-Name : </label>
+    <input type="text" name="lname" id="lname"><br>
+    <label>Password : </label>
+    <input type="password" name="pword" id="pword"><br>
+    <label>Address : </label>
+    <textarea rows="10" cols="10" name="addrs"></textarea><br>
+    <label>States</label>
+    <select name="states" id="states">
+        <option value="karnataka">Karnataka</option>
+        <option value="tamil nadu">Tamil Nadu</option>
+        <option value="kerala">Kerala</option>
+        <option value="goa">Goa</option>
+    </select><br><br>
+<!--RADIO BUTTONS-->
+    <input type="radio" id="fruit" value="grapes">
+    <label for="fruit">GRAPES</label>
+    <br><BR>
+    <input type="radio" id="fruit1" value="strawberry">
+    <label for="fruit">STRAWBERRY</label>
+    <br>
+<!--CHECK-BOX-->
+    <input type="checkbox" id="vacc" name="2-Vaccination" value="2">
+    <label for="vacc">Completed 2 vaccination</label>
+    <br>
+    <input type="checkbox" id="vacc1" name="2-Vaccination" value="1">
+    <label for="vacc1">Completed 1 vaccination</label>
+    <br>
+    <input type="checkbox" id="vacc0" name="2-Vaccination" value="0">
+    <label for="vacc0">No vaccination taken</label>
+    <br>
+    <label for="doj">Join Date</label>
+    <input type="date" id="doj" name="doj">
+    <br>
+    <label for qty>QUANTITY(between 1-5)</label>
+    <input type="number" id="qty" name="qty" min="1" max="5">
+    <br>
+    <label for = "myfile">Select files </label>
+    <input type="file" id="myfile" name="myfile" multiple>
+    <br>
+    <label for="mymail">Enter your email</label>
+    <input type="email" id="mymail" name="mymail">
+    <br>
+    <input type = "submit" value="submit">
+</form>
+</body>
+</html>
