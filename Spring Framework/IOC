@@ -1,0 +1,106 @@
+package org.thbs;
+import lombok.*;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+public class Customer
+{
+    private int custId;
+    private String custName;
+    private Address address;
+    private Account account;
+    public Customer(Address address)
+    {
+        this.address=address;
+    }
+    public Customer(Account account)
+    {
+        this.account=account;
+    }
+}
+-----------------------------------------------------------------
+package org.thbs;
+
+import lombok.*;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+public class Address
+{
+    private String doorNo;
+    private String street;
+    private String city;
+    private String state;
+    private String pin;
+}
+-----------------------------------------------------------------
+package org.thbs;
+
+import lombok.*;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+public class Account
+{
+    private String accId;
+    private String accType;
+
+}
+--------------------------------------------------------------------
+package org.thbs;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext context = new ClassPathXmlApplicationContext("file:src/main/java/beans.xml");
+        Customer customer = (Customer)context.getBean("customer");
+        customer.setCustId(100);
+        customer.setCustName("Priyanka");
+
+        Address address = (Address)customer.getAddress();
+        address.setDoorNo("10");
+        address.setStreet("Udayanagar");
+        address.setCity("Bangalore");
+        address.setState("Karnataka");
+        address.setPin("560016");
+
+        Account account = (Account)customer.getAccount();
+        account.setAccId("1001");
+        account.setAccType("savings");
+
+        System.out.println(customer);
+    }
+}
+------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!--jl-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="address" class="org.thbs.Address"/>
+    <bean id="account" class="org.thbs.Account"/>
+    <bean id="customer" class="org.thbs.Customer">
+        <property name="address" ref="address"/>
+        <property name="account" ref="account"/>
+        <!--<constructor-arg ref="address"/>-->
+    </bean>
+</beans>
