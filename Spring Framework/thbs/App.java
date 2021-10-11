@@ -11,33 +11,22 @@ public class App
 {
     public static void main( String[] args )
     {
-
         ApplicationContext context = new ClassPathXmlApplicationContext("file:src/main/java/beans.xml");
-        THISClient c1 = (THISClient) context.getBean("client1");
-        System.out.println(c1.deposit(1000L,5000));
-        System.out.println();
-        System.out.println(c1.withdraw(1000L,10000));
-        System.out.println();
-        System.out.println(c1.getBalance(1000L));
+        Customer customer = (Customer)context.getBean("customer");
+        customer.setCustId(100);
+        customer.setCustName("Priyanka");
 
-        THISClient c21 = (THISClient) context.getBean("client1");
-        System.out.println(c21.deposit(123L,5000));
-        System.out.println();
-        System.out.println(c21.withdraw(123L,10000));
-        System.out.println();
-        System.out.println(c21.getBalance(123L));
+        Address address = (Address)customer.getAddress();
+        address.setDoorNo("10");
+        address.setStreet("Udayanagar");
+        address.setCity("Bangalore");
+        address.setState("Karnataka");
+        address.setPin("560016");
 
-        System.out.println(c1==c21);
+        Account account = (Account)customer.getAccount();
+        account.setAccId("1001");
+        account.setAccType("savings");
 
-        System.out.println();
-
-        THISClient c2 = (THISClient) context.getBean("client2");
-        System.out.println(c2.deposit(1005L,5000));
-        System.out.println();
-        System.out.println(c2.withdraw(1005L,10000));
-        System.out.println();
-        System.out.println(c2.getBalance(1005L));
-
-        ((ClassPathXmlApplicationContext) context).close();
+        System.out.println(customer);
     }
 }
