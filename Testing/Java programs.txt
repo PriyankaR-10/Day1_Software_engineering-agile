@@ -1,0 +1,246 @@
+1. ADDITION:
+--------------
+
+package Test;
+import java.util.Scanner;
+
+public class add 
+{
+	public static void main(String args[])
+	{
+		int a, b, sum=0;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter num1 : ");
+		a=sc.nextInt();
+		System.out.print("Enter num2 : ");
+		b=sc.nextInt();
+		sum=a+b;
+		System.out.println(sum);
+	}
+}
+---------------------------------------------------------
+2. AVERAGE OF 3 NUMBERS:
+------------------------
+package Test;
+import java.util.*;
+public class avg 
+{
+	public static void main(String args[])
+	{
+		int n,result=0;
+		int a[]=new int[5];
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the number of elements : ");
+		n=sc.nextInt();
+		for(int i=0;i<n;i++)
+			a[i]=sc.nextInt();
+		for(int i=0;i<n;i++)
+		    result=result+a[i];
+		   System.out.println("average of is = "+result/n);
+	}
+}
+-----------------------------------------------------------------------
+3. ARITHMETIC OPERATIONS:
+---------------------------
+package Test;
+
+import java.util.Scanner;
+
+public class arith 
+{
+	public static void main(String args[])
+	{
+		int a, b;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter num1 : ");
+		a=sc.nextInt();
+		System.out.print("Enter num2 : ");
+		b=sc.nextInt();
+		System.out.println("Sum = "+(a+b));
+		System.out.println("Difference = "+(a-b));
+		System.out.println("Div = "+(a/b));
+		System.out.println("Rem = "+(a%b));
+		System.out.println("Prod = "+(a*b));
+	}
+}
+------------------------------------------------------------------------
+4. AREA OF A CIRCLE:
+---------------------
+package Test;
+import java.util.*;
+import java.math.*;
+public class circle 
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		double r;
+		System.out.print("Enter radius : ");
+		r=sc.nextDouble();
+		System.out.print("Perimeter is "+2*Math.PI*r);
+		System.out.println();
+		System.out.print("Area is "+Math.PI*Math.pow(r,2));
+	}
+}
+------------------------------------------------------------------------
+5. DIVISION & MULTIPLICATION:
+-----------------------------
+package Test;
+
+import java.util.Scanner;
+
+public class division
+{
+	public static void main(String args[])
+	{
+		int a, b;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter num1 : ");
+		a=sc.nextInt();
+		System.out.print("Enter num2 : ");
+		b=sc.nextInt();
+		System.out.println((a/b));
+		System.out.println((a*b));
+	}
+}
+------------------------------------------------------------------------
+6. EVALUATE THE GIVEN EXPRESSION:
+---------------------------------
+package Test;
+
+public class expr 
+{
+	public static void main(String args[])
+	{
+		System.out.println(((25.5 * 3.5 - 3.5 * 3.5) / (40.5 - 4.5)));
+		System.out.println(4.0 * (1 - (1.0/3) + (1.0/5) - (1.0/7) + (1.0/9) - (1.0/11)));
+		System.out.println(-5 + 8 * 6);
+		System.out.println((55+9) % 9);
+		System.out.println( 20 + -3*5 / 8);
+		System.out.println(5 + 15 / 3 * 2 - 8 % 3);
+	}
+}
+-------------------------------------------------------------------------
+7. HELLO:
+---------
+package Test;
+import java.util.*;
+public class hello 
+{
+	public static void main(String args[])
+	{
+		String name;
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter your name : ");
+		name=sc.nextLine();
+		System.out.println("Hello");
+		System.out.println(name);
+		sc.close();
+	}
+}
+--------------------------------------------------------------------------
+8. MULTIPLICATION OF A GIVEN NUMBER:
+-------------------------------------
+package Test;
+import java.util.*;
+public class multiplication 
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter a number : ");
+		int n=sc.nextInt();
+		for (int i=1;i<=10;i++)
+		{
+	      System.out.println(n+" x "+i+" = "+(n*i));
+		}
+	}
+}
+---------------------------------------------------------------------------
+9. PATTERN:
+-------------
+package Test;
+
+public class pattern 
+{
+	public static void main(String args[])
+	{
+	  String j = "J";
+      String a = "a";
+      String v = "V";
+      System.out.println("    "+j+"    "+a+"     "+v+"     "+v+"    "+a);
+      System.out.println("    "+j+"   "+a+" "+a+"     "+v+"   "+v+"    "+a+" "+a);
+      System.out.println(j+"  "+j+"  "+a+a+a+a+a+"     "+v+" "+v+"    "+a+a+a+a+a);
+      System.out.println(" "+j+j+"   "+a+"     "+a+"     "+v+"    "+a+"     "+a);
+	}
+}
+----------------------------------------------------------------------------
+10. PRIME NUMBER:
+------------------
+package Test;
+import java.util.*;
+
+public class prime 
+{
+	public static void main(String args[])
+	{
+		int n;
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter a number : ");
+		n=sc.nextInt();
+		boolean f=false;
+		for(int i=2;i<=n/2;i++)
+		{
+			if(n%i==0)
+			{
+				f=true;
+				break;
+			}
+		}
+		if(!f)
+			System.out.print(n+" is a prime number");
+		else
+			System.out.print(n+" is not a prime number");
+	}
+}
+-----------------------------------------------------------------------------
+11. AREA OF A RECTANGLE:
+-------------------------
+package Test;
+import java.util.*;
+public class rectangle 
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		double w,h;
+		System.out.print("Enter the height and width of a rectange : ");
+		w = sc.nextDouble();
+		h=sc.nextDouble();
+		System.out.print("Area of a rectangle : "+(w*h));
+		System.out.println();
+		System.out.print("Perimeter of a rectangle : "+((2*(w+h))));
+	}
+}
+-------------------------------------------------------------------------------
+12. SWAPPING OF 2 NUMBERS WITHOUT 3rd VARIABLE:
+------------------------------------------------
+package Test;
+import java.util.*;
+public class Swap 
+{
+	public static void main(String args[])
+	{
+		int a,b;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the 2 numbers : ");
+		a = sc.nextInt();
+		b = sc.nextInt();
+		System.out.print("Numbers before swapping : "+a+"\t"+b);
+		a=a*b;
+		b=a/b;
+		a=a/b;
+		System.out.println();
+		System.out.print("Numbers after swapping : "+a+"\t"+b);
+	}
+}
