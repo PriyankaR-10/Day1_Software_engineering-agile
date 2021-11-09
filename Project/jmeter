@@ -1,0 +1,85 @@
+Types of testing:
+-------------------
+1. Functional - Manually, automation
+2. non-functional - Manually, automation
+-------------------------------------------
+performance testing:
+--------------------
+->TOOLS:
+============
+Microfocus load runner - licensed tool
+Apache JMeter - free tool available to everyone 
+Neo laad - licensed tool
+gatling - js
+web load - licensed tool
+K6 - java
+------------------------------------------------
+performance testing lifecycle:
+================================
+1. req testing
+2. test design
+3. scenario creation, test exe
+4. result analysis
+5. report preparation
+----------------------------------
+1.REQUIREMENT GATHERING:
+- learn functionality of the appln - what is the appln used for?
+- technology behind this appln : what is the backend programming(Java/C/C#/.net)||what is the db used(oracle, sql, no sql)?
+- understand appln architecture
+- know about appln h/w n s/w configurations
+- ask for what are the user flows to b tested as part of performance testing
+- what is the user load to b tetsed for each flow-eg:login-1000 user logins to b tested in 1hr
+- how many no oftests we r doing?
+----------------------------------
+2. Test Design:
+- how many tests we r doing?
+- how many resources we need
+- what s/w we need what h/w needed to test
+- what metrics u collect
+-----------------------------------------
+3. SCENARIO CREATION, TEST EXECUTION:
+- create test setup
+- execute performance test
+------------------------------------------
+4, Result analysis & 5. Report preparation
+---------------------------------------------------------
+parameterization -to pass differenet userames and passwords to the script.
+---------------------------------------------------------------------------
+1. create one csv data sheet with 5 user names and 5 passwords
+2. go to jmeter
+3. right click on Threadgroup -> add -> config element -> csv data set config
+4. select csv dataset config
+5. browse your csv data sheet
+6. name two varaiables in varaiable name section of csv dataset
+7. replace 1st varaiable in login reqiest in place of username with ${​​​​​}​​​​​
+8. replace 2nd varaiable in login reqiest in place of password with ${​​​​​}​​​​​
+9. make changes to the traed group ( 5 threads, 10 rampup, one loop )
+10. run the script
+-------------------------------------------------------------------------------------
+TYPES OF PERFORMANCE TESTING:
+---------------------------------------
+eg:-> Flipkart appln - everyday 24k users login into flipkart n they place orders
+Flipkart - 5k users login b/w 12PM-1PM
+Scenario creation : 5k users test for 1hr - normal load on the appln
+
+1. load testing - load test on flipkart on 5k users for 1hr
+2. endurance/availablity testing - to test flipkart for 24hrs duration(to check capability to work)
+3. spike tetsing - add spikes to the user load(to handle user)
+4. Stress test - test appln for more than ex[ected user load
+5. volume test - time delay
+6. fail over - backup server to act up 
+----------------------------------------------------------------------------------------------------
+ramp-up/no of threads = 10/5 = 2 ->for every 2 secs a user logins in
+Recording controller - transaction controller
+
+View result tree - jus to view/debug the report
+aggregate report - to prepare the report
+----------------------------------------------------------------------
+Constant timer - to delay next script launch
+----------------------------------------------
+Correlation - saving a dynamic token val into a var & send the var along with a http req
+Regular expr: <input type="hidden" name="userSession" value="(.*?)"/>
+-----------------------------------------------------------------
+Assertion : Manual handling the errors in jmeter using response validation
+1. success case
+2. failure case
